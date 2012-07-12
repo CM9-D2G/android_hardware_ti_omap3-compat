@@ -1,4 +1,4 @@
-/*
+	/*
  * Copyright (C) Texas Instruments - http://www.ti.com/
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -85,13 +85,14 @@ public:
     //API to flush the buffers for preview
     status_t flushBuffers();
 
-    int queueToGralloc(int index, char* fp);
+    int queueToGralloc(int index, char* fp, int frameType);
+    char** getVirtualAddress(int count);
 
 protected:
 
 //----------Parent class method implementation------------------------------------
     virtual status_t startPreview();
-    virtual status_t stopPreview();
+    virtual status_t stopPreview(bool check);
     virtual status_t useBuffers(CameraMode mode, void* bufArr, int num, size_t length, unsigned int queueable);
     virtual status_t fillThisBuffer(void* frameBuf, CameraFrame::FrameType frameType);
     virtual status_t getFrameSize(size_t &width, size_t &height);
@@ -135,12 +136,11 @@ private:
 
      struct VideoInfo *mVideoInfo;
      int mCameraHandle;
-
+     int mmap_fd[6];
+     int ion_fd;
 
     int nQueued;
     int nDequeued;
-    char* mImageCaptureBuffer;
-    bool mImagebuffer;
 };
 }; //// namespace
 #endif //V4L_CAMERA_ADAPTER_H

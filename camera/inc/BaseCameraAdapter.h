@@ -50,7 +50,8 @@ public:
     //API to send a command to the camera
     virtual status_t sendCommand(CameraCommands operation, int value1 = 0, int value2 = 0, int value3 = 0 );
 
-    virtual int queueToGralloc(int index, char* fp) = 0;
+    virtual int queueToGralloc(int index, char* fp, int frameType) = 0;
+    virtual char** getVirtualAddress(int count) = 0;
     virtual char * GetFrame(int &index) = 0;
 
     virtual status_t registerImageReleaseCallback(release_image_buffers_callback callback, void *user_data);
@@ -106,7 +107,7 @@ protected:
     virtual status_t startPreview();
 
     //Should be implemented by deriving classes in order to stop camera preview
-    virtual status_t stopPreview();
+    virtual status_t stopPreview(bool check);
 
     //Should be implemented by deriving classes in order to start smooth zoom
     virtual status_t startSmoothZoom(int targetIdx);
