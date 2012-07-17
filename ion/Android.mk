@@ -1,5 +1,6 @@
 # only include if running on an omap4 platform
 ifeq ($(TARGET_BOARD_PLATFORM),omap3)
+ifeq ($(TARGET_USES_ION),true)
 
 LOCAL_PATH:= $(call my-dir)
 
@@ -17,4 +18,5 @@ LOCAL_MODULE_TAGS := optional tests
 LOCAL_SHARED_LIBRARIES := liblog
 include $(BUILD_HEAPTRACKED_EXECUTABLE)
 
+endif
 endif
