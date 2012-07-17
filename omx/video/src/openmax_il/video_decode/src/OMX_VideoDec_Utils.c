@@ -57,7 +57,6 @@
 #include "usn.h"
 
 #define ENABLE_GRALLOC_BUFFERS
-#define USE_ION
 #ifdef USE_ION
 #include <sys/mman.h>
 #include <sys/eventfd.h>

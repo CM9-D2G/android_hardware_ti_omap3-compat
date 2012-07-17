@@ -73,7 +73,6 @@
 
 
 #define ENABLE_GRALLOC_BUFFERS
-#define USE_ION
 #ifdef USE_ION
 #include <sys/mman.h>
 #include <sys/eventfd.h>
@@ -2549,10 +2548,12 @@ static OMX_ERRORTYPE VIDDEC_ComponentDeInit(OMX_HANDLETYPE hComponent)
         }
     }
 
+#ifdef USE_ION
     if(pComponentPrivate->ion_fd != 0)
 	{
            ion_close(pComponentPrivate->ion_fd);
 	}
+#endif
 
 #ifdef RESOURCE_MANAGER_ENABLED
     if(pComponentPrivate->eRMProxyState == VidDec_RMPROXY_State_Registered){
@@ -2814,7 +2815,9 @@ static OMX_ERRORTYPE VIDDEC_UseBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 
 #ifdef  ENABLE_GRALLOC_BUFFERS
 	OMX_PTR buff_t;
+#ifdef USE_ION
 	struct ion_map_gralloc_to_ionhandle_data data;
+#endif
 #endif
 
 
@@ -2893,6 +2896,7 @@ static OMX_ERRORTYPE VIDDEC_UseBuffer(OMX_IN OMX_HANDLETYPE hComponent,
     if (nPortIndex == VIDDEC_OUTPUT_PORT) {
 
 		if(pComponentPrivate->pCompPort[1]->VIDDECBufferType == GrallocPointers) {
+#ifdef USE_ION
 			data.gralloc_handle = ((IMG_native_handle_t*)(*ppBufferHdr)->pBuffer)->fd[0];
 
                    
@@ -2904,6 +2908,7 @@ static OMX_ERRORTYPE VIDDEC_UseBuffer(OMX_IN OMX_HANDLETYPE hComponent,
 								MAP_SHARED, 0, &buff_t, &pComponentPrivate->mmap_fd[pBufferCnt]) < 0) {
 						LOGV("ION map failed");
 		}
+#endif
 		(*ppBufferHdr)->pPlatformPrivate = buff_t;
 		}
     }

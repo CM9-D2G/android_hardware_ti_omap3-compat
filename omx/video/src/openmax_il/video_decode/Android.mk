@@ -24,9 +24,11 @@ LOCAL_C_INCLUDES += \
         $(TI_OMX_SYSTEM)/perf/inc
 endif
 
-LOCAL_SHARED_LIBRARIES := $(TI_OMX_COMP_SHARED_LIBRARIES) \
-							libion \
-							libhardware
+LOCAL_SHARED_LIBRARIES := $(TI_OMX_COMP_SHARED_LIBRARIES) libhardware
+
+ifeq ($(TARGET_USES_ION),true)
+LOCAL_SHARED_LIBRARIES += libion
+endif
 
 ifeq ($(PERF_INSTRUMENTATION),1)
 LOCAL_SHARED_LIBRARIES += \
@@ -37,6 +39,9 @@ LOCAL_LDLIBS += \
         -lpthread \
 
 LOCAL_CFLAGS := $(TI_OMX_CFLAGS) -DANDROID -DOMAP_2430 -DANDROID_QUIRK_LOCK_BUFFER
+ifeq ($(TARGET_USES_ION),true)
+LOCAL_CFLAGS += -DUSE_ION
+endif
 
 LOCAL_MODULE:= libOMX.TI.Video.Decoder
 LOCAL_MODULE_TAGS := optional
