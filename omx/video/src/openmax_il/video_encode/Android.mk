@@ -5,36 +5,19 @@ include $(CLEAR_VARS)
 LOCAL_PRELINK_MODULE := false
 
 LOCAL_SRC_FILES:= \
-	src/OMX_VideoEnc_Thread.c \
-	src/OMX_VideoEnc_Utils.c \
-	src/OMX_VideoEncoder.c
+        src/OMX_VideoEnc_Thread.c \
+        src/OMX_VideoEnc_Utils.c \
+        src/OMX_VideoEncoder.c
 
 LOCAL_C_INCLUDES := $(TI_OMX_COMP_C_INCLUDES) \
-	$(TI_OMX_VIDEO)/video_encode/inc \
+        $(TI_OMX_VIDEO)/video_encode/inc \
+        $(HARDWARE_TI_OMAP3_BASE)/camera/inc \
+        frameworks/base/include/media/stagefright \
 
 LOCAL_SHARED_LIBRARIES := $(TI_OMX_COMP_SHARED_LIBRARIES)
 
+
 LOCAL_CFLAGS := $(TI_OMX_CFLAGS) -DOMAP_2430
-
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),jordan)
-LOCAL_CFLAGS += -DWVGA_BUFFERS
-endif
-
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),sholes)
-LOCAL_CFLAGS += -DWVGA_BUFFERS
-endif
-
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),shadow)
-LOCAL_CFLAGS += -DWVGA_BUFFERS
-endif
-
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),droid2)
-LOCAL_CFLAGS += -DWVGA_BUFFERS
-endif
-
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),droid2we)
-LOCAL_CFLAGS += -DWVGA_BUFFERS
-endif
 
 LOCAL_MODULE:= libOMX.TI.Video.encoder
 LOCAL_MODULE_TAGS := optional
