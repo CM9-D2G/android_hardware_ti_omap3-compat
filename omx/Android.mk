@@ -70,6 +70,11 @@ ifeq ($(DVFS_ENABLED),1)
 TI_OMX_CFLAGS += -DDVFS_ENABLED
 endif
 
+# Required for Motorola Defy, Cliq2 & DroidX Codecs
+ifeq ($(TARGET_USE_OMX_RECOVERY),true)
+TI_OMX_CFLAGS += -DMOTO_FORCE_RECOVERY
+endif
+
 
 TI_OMX_COMP_C_INCLUDES := \
         $(TI_OMX_INCLUDES) \

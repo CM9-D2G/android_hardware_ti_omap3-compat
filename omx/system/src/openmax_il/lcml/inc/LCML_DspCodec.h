@@ -87,6 +87,19 @@
         OMX_ERROR4 (((LCML_CODEC_INTERFACE *)pHandle)->dbg, "\n****************LCML ERROR : DSP ************************\n");\
         goto label;                               \
     }                                              /**/
+    
+#ifdef MOTO_FORCE_RECOVERY
+#include <DSPManager.h>
+#undef DSP_ERROR_EXIT
+#define DSP_ERROR_EXIT(err, msg, label,pHandle) \
+    if (DSP_FAILED (err)) {                                                   \
+        OMX_ERROR4 (((LCML_CODEC_INTERFACE *)pHandle)->dbg, "\n****************LCML ERROR : DSP ************************\n");\
+        eError = DSPManager_Force_Recovery();                     \
+        OMX_ERROR4 (((LCML_CODEC_INTERFACE *)pHandle)->dbg, "Error: %s : Err Num = %d", msg, err);  \
+        OMX_ERROR4 (((LCML_CODEC_INTERFACE *)pHandle)->dbg, "\n****************LCML ERROR : DSP ************************\n");\
+        goto label;                               \
+    }                                              /**/
+#endif    
 
 /* =======================================================================
  *
