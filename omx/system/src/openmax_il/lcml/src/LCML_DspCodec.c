@@ -58,8 +58,13 @@
 #include "usn.h"
 #include <sys/time.h>
 #include <sys/prctl.h>
-
+#include <utils/Log.h>
 #define CAM_FIX
+
+#ifdef CAM_FIX
+#undef CAM_FIX
+#endif
+
 #ifdef CAM_FIX
 static pthread_mutex_t* AVOID_DSPMMU_mutex = NULL;
 #endif
@@ -304,8 +309,8 @@ static OMX_ERRORTYPE InitMMCodecEx(OMX_HANDLETYPE hInt,
         status = DspManager_Open(0, NULL);
         DSP_ERROR_EXIT(status, "DSP Manager Open", ERROR, hInt);
         OMX_PRDSP1 (((LCML_CODEC_INTERFACE *)hInt)->dbg, "DspManager_Open Successful\n");
-        phandle->iDspOpenCount++;
-        phandle->buf_flush_flag = OMX_TRUE;
+        //phandle->iDspOpenCount++;
+        //phandle->buf_flush_flag = OMX_TRUE;
 
         /* Attach and get handle to processor */
         status = DSPProcessor_Attach(TI_PROCESSOR_DSP, NULL, &(phandle->dspCodec->hProc));
@@ -1608,10 +1613,10 @@ OMX_ERRORTYPE DmmMap(DSP_HPROCESSOR ProcHandle,
     /* Map */
     status = DSPProcessor_Map(ProcHandle,
                               pDmmBuf->pAllocated,/* malloc'd data here*/
-                              OMX_GET_SIZE_DSPALIGN(size), /* size */
+                              size, /* size */
                               pDmmBuf->pReserved, /* reserved space */
                               &(pDmmBuf->pMapped), /* returned map pointer */
-                              check); /* final param is reserved.  set to zero. */
+                              0); /* final param is reserved.  set to zero. */
     if(DSP_FAILED(status))
     {
         OMX_ERROR4 (dbg, "DSPProcessor_Map() failed - error 0x%x", (int)status);

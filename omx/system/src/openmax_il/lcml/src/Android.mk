@@ -11,6 +11,7 @@ LOCAL_SRC_FILES:= \
 
 LOCAL_C_INCLUDES += \
         $(TI_OMX_INCLUDES) \
+        $(TI_BRIDGE_INCLUDES) \
         $(TI_BRIDGE_TOP)/inc \
         $(TI_OMX_SYSTEM)/common/inc \
         $(TI_OMX_SYSTEM)/lcml/inc \
@@ -31,6 +32,6 @@ endif
 LOCAL_CFLAGS := $(TI_OMX_CFLAGS)
 
 LOCAL_MODULE:= libLCML
-LOCAL_MODULE_TAGS := optional
+LOCAL_MODULE_TAGS := eng
 
 include $(BUILD_SHARED_LIBRARY)
