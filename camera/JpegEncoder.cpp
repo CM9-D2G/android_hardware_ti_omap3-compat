@@ -197,7 +197,7 @@ OMX_ERRORTYPE JpegEncoder::SetExifBuffer()
     /** Exif */
     JPEG_APPTHUMB_MARKER jpeg_marker;
     OMX_BOOL bAPP1 = OMX_TRUE;
-    char indexCustom[] = "OMX.TI.JPG.Encoder.Config.APP1";
+    char indexCustom[] = "OMX.TI.JPEG.Encoder.Config.APP1";
 
     jpeg_marker.pMarkerBuffer = NULL;
 
@@ -234,7 +234,7 @@ OMX_ERRORTYPE JpegEncoder::SetPPLibDynamicParams()
     OMX_ERRORTYPE eError = OMX_ErrorNone;
     OMX_INDEXTYPE nCustomIndex = OMX_IndexMax;
     JPGE_PPLIB_DynamicParams pPPLibDynParams;
-    char strPPLibDynParams[] = "OMX.TI.JPG.Encoder.Config.PPLibDynParams";
+    char strPPLibDynParams[] = "OMX.TI.JPEG.Encoder.Config.PPLibDynParams";
 
     if(pOMXHandle) //handle to JPG.Encoder must be established before doing anything
     {
@@ -331,10 +331,10 @@ bool JpegEncoder::StartFromLoadedState()
     int bitsPerPixel;
     int nMultFactor = 0;
     int nHeightNew, nWidthNew;
-    char strTIJpegEnc[] = "OMX.TI.JPG.Encoder";
-    char strQFactor[] = "OMX.TI.JPG.Encoder.Config.QFactor";
-	char strConversionFlag[] = "OMX.TI.JPG.Encoder.Config.ConversionFlag";
-	char strPPLibEnable[] = "OMX.TI.JPG.Encoder.Config.PPLibEnable";
+    char strTIJpegEnc[] = "OMX.TI.JPEG.Encoder";
+    char strQFactor[] = "OMX.TI.JPEG.Encoder.Config.QFactor";
+	char strConversionFlag[] = "OMX.TI.JPEG.Encoder.Config.ConversionFlag";
+	char strPPLibEnable[] = "OMX.TI.JPEG.Encoder.Config.PPLibEnable";
 
     OMX_S32 nCompId = 300;
     OMX_PORT_PARAM_TYPE PortType;
