@@ -197,7 +197,7 @@ OMX_ERRORTYPE JpegEncoder::SetExifBuffer()
     /** Exif */
     JPEG_APPTHUMB_MARKER jpeg_marker;
     OMX_BOOL bAPP1 = OMX_TRUE;
-    char indexCustom[] = "OMX.TI.JPEG.encoder.Config.APP1";
+    char indexCustom[] = "OMX.TI.JPG.Encoder.Config.APP1";
 
     jpeg_marker.pMarkerBuffer = NULL;
 
@@ -234,9 +234,9 @@ OMX_ERRORTYPE JpegEncoder::SetPPLibDynamicParams()
     OMX_ERRORTYPE eError = OMX_ErrorNone;
     OMX_INDEXTYPE nCustomIndex = OMX_IndexMax;
     JPGE_PPLIB_DynamicParams pPPLibDynParams;
-    char strPPLibDynParams[] = "OMX.TI.JPEG.encoder.Config.PPLibDynParams";
+    char strPPLibDynParams[] = "OMX.TI.JPG.Encoder.Config.PPLibDynParams";
 
-    if(pOMXHandle) //handle to JPEG encoder must be established before doing anything
+    if(pOMXHandle) //handle to JPG.Encoder must be established before doing anything
     {
         eError = OMX_GetExtensionIndex(pOMXHandle, strPPLibDynParams, (OMX_INDEXTYPE*)&nCustomIndex);
         if ( eError != OMX_ErrorNone ) {
@@ -331,10 +331,10 @@ bool JpegEncoder::StartFromLoadedState()
     int bitsPerPixel;
     int nMultFactor = 0;
     int nHeightNew, nWidthNew;
-    char strTIJpegEnc[] = "OMX.TI.JPEG.encoder";
-    char strQFactor[] = "OMX.TI.JPEG.encoder.Config.QFactor";
-	char strConversionFlag[] = "OMX.TI.JPEG.encoder.Config.ConversionFlag";
-	char strPPLibEnable[] = "OMX.TI.JPEG.encoder.Config.PPLibEnable";
+    char strTIJpegEnc[] = "OMX.TI.JPG.Encoder";
+    char strQFactor[] = "OMX.TI.JPG.Encoder.Config.QFactor";
+	char strConversionFlag[] = "OMX.TI.JPG.Encoder.Config.ConversionFlag";
+	char strPPLibEnable[] = "OMX.TI.JPG.Encoder.Config.PPLibEnable";
 
     OMX_S32 nCompId = 300;
     OMX_PORT_PARAM_TYPE PortType;
@@ -345,7 +345,7 @@ bool JpegEncoder::StartFromLoadedState()
     OMX_INDEXTYPE nCustomIndex = OMX_IndexMax;
     OMX_CALLBACKTYPE JPEGCallBack ={OMX_JPEGE_EventHandler, OMX_JPEGE_EmptyBufferDone, OMX_JPEGE_FillBufferDone};
 
-    if (pOMXHandle) { // we should not have more than one instance of JPEG encoder open
+    if (pOMXHandle) { // we should not have more than one instance of JPG.Encoder open
 
         eError = TIOMX_Deinit();
         if ( eError != OMX_ErrorNone ) {

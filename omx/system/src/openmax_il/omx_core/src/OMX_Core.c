@@ -85,7 +85,7 @@ char compName[60][200];
 char *tComponentName[MAXCOMP][3] = {
     /*video and image components */
     {"OMX.TI.JPEG.decoder", "image_decoder.jpeg", MAX_CONCURRENT_INSTANCES},
-    {"OMX.TI.JPEG.encoder", "image_encoder.jpeg", MAX_CONCURRENT_INSTANCES},
+    {"OMX.TI.JPEG.Encoder", "image_encoder.jpeg", MAX_CONCURRENT_INSTANCES},
     {"OMX.TI.Video.Decoder", "video_decoder.h263", MAX_CONCURRENT_INSTANCES},
     {"OMX.TI.Video.Decoder", "video_decoder.avc", MAX_CONCURRENT_INSTANCES},
     {"OMX.TI.Video.Decoder", "video_decoder.mpeg2", MAX_CONCURRENT_INSTANCES},
@@ -248,6 +248,10 @@ OMX_ERRORTYPE TIOMX_GetHandle( OMX_HANDLETYPE* pHandle, OMX_STRING cComponentNam
 
     int refIndex = 0;
     for (refIndex=0; refIndex < MAX_TABLE_SIZE; refIndex++) {
+        // Fix to prevent crash if our list is smaller then MAX_TABLE_SIZE
+        if (componentTable[refIndex].name == NULL) 
+            break;
+        
         //get the index for the component in the table
         if (strcmp(componentTable[refIndex].name, cComponentName) == 0) {
 

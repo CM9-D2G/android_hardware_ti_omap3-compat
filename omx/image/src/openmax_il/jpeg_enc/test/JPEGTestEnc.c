@@ -24,7 +24,7 @@
 /**
 * @file JPEGTestEnc.c
 *
-* This file implements OMX Component for JPEG encoder that
+* This file implements OMX Component for JPEG.Encoder that
 * is fully compliant with the OMX specification 1.5.
 *
 * @path  $(CSLPATH)\src
@@ -81,7 +81,7 @@
 #ifdef UNDER_CE
 OMX_STRING StrJpegEncoder= "OMX.TI.IMAGE.JPEG.ENC"; 
 #else
- OMX_STRING StrJpegEncoder= "OMX.TI.JPEG.encoder";
+ OMX_STRING StrJpegEncoder= "OMX.TI.JPEG.Encoder";
 #endif
 
 OMX_U8 APPLICATION1_NOTHUMB[]={
@@ -858,7 +858,7 @@ OMX_ERRORTYPE SetMarkers(OMX_HANDLETYPE pHandle, IMAGE_INFO *imageinfo, OMX_CONF
                     goto EXIT;
                 }
 
-		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.APP0", (OMX_INDEXTYPE*)&nCustomIndex);
+		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.APP0", (OMX_INDEXTYPE*)&nCustomIndex);
 		if ( eError != OMX_ErrorNone ) {
 			printf("%d::APP_Error at function call: %x\n", __LINE__, eError);
 			eError = OMX_ErrorUndefined;
@@ -928,7 +928,7 @@ OMX_ERRORTYPE SetMarkers(OMX_HANDLETYPE pHandle, IMAGE_INFO *imageinfo, OMX_CONF
 			sAPP1.pMarkerBuffer[165] = (nHeight >> 8) & 0xFF;
 		}
 		
-		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.APP1", (OMX_INDEXTYPE*)&nCustomIndex);
+		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.APP1", (OMX_INDEXTYPE*)&nCustomIndex);
 		if ( eError != OMX_ErrorNone ) {
 			printf("%d::APP_Error at function call: %x\n", __LINE__, eError);
 			eError = OMX_ErrorUndefined;
@@ -966,7 +966,7 @@ OMX_ERRORTYPE SetMarkers(OMX_HANDLETYPE pHandle, IMAGE_INFO *imageinfo, OMX_CONF
                     goto EXIT;
                 }
 
-		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.APP5", (OMX_INDEXTYPE*)&nCustomIndex);
+		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.APP5", (OMX_INDEXTYPE*)&nCustomIndex);
 		if ( eError != OMX_ErrorNone ) {
 			printf("%d::APP_Error at function call: %x\n", __LINE__, eError);
 			eError = OMX_ErrorUndefined;
@@ -992,7 +992,7 @@ OMX_ERRORTYPE SetMarkers(OMX_HANDLETYPE pHandle, IMAGE_INFO *imageinfo, OMX_CONF
 		sAPP13.nMarkerSize = sizeof(APPLICATION13);
 		sAPP13.pMarkerBuffer = APPLICATION13;
 
-		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.APP13", (OMX_INDEXTYPE*)&nCustomIndex);
+		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.APP13", (OMX_INDEXTYPE*)&nCustomIndex);
 		if ( eError != OMX_ErrorNone ) {
 			printf("%d::APP_Error at function call: %x\n", __LINE__, eError);
 			eError = OMX_ErrorUndefined;
@@ -1008,7 +1008,7 @@ OMX_ERRORTYPE SetMarkers(OMX_HANDLETYPE pHandle, IMAGE_INFO *imageinfo, OMX_CONF
 
 	/* set comment marker */
 	if (imageinfo->nComment) {
-		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.CommentFlag", (OMX_INDEXTYPE*)&nCustomIndex);
+		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.CommentFlag", (OMX_INDEXTYPE*)&nCustomIndex);
 		if ( eError != OMX_ErrorNone ) {
 			printf("%d::APP_Error at function call: %x\n", __LINE__, eError);
 			eError = OMX_ErrorUndefined;
@@ -1021,7 +1021,7 @@ OMX_ERRORTYPE SetMarkers(OMX_HANDLETYPE pHandle, IMAGE_INFO *imageinfo, OMX_CONF
 			goto EXIT;
 		}
 
-		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.CommentString", (OMX_INDEXTYPE*)&nCustomIndex);
+		eError = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.CommentString", (OMX_INDEXTYPE*)&nCustomIndex);
 		if ( eError != OMX_ErrorNone ) {
 			printf("%d::APP_Error at function call: %x\n", __LINE__, eError);
 			eError = OMX_ErrorUndefined;
@@ -1658,7 +1658,7 @@ do
 
 	if (bSetCustomHuffmanTable){
 
-	    error = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.HuffmanTable", (OMX_INDEXTYPE*)&nCustomIndex);
+	    error = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.HuffmanTable", (OMX_INDEXTYPE*)&nCustomIndex);
 	    if ( error != OMX_ErrorNone ) {
 	        printf("%d::APP_Error at function call: %x\n", __LINE__, error);             
 	       error = OMX_ErrorBadParameter;
@@ -1760,7 +1760,7 @@ do
 	pQfactorType->nVersion.s.nStep = 0x0;
 	pQfactorType->nPortIndex = 0x0;
 
-	error = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.QFactor", (OMX_INDEXTYPE*)&nCustomIndex);
+	error = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.QFactor", (OMX_INDEXTYPE*)&nCustomIndex);
 	if ( error != OMX_ErrorNone ) {
 	    printf("%d::APP_Error at function call: %x\n", __LINE__, error);
 	    goto EXIT;
@@ -1819,7 +1819,7 @@ do
 
 #if 0
 	if (imageinfo->nDRI) {
-	    error = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.encoder.Config.DRI", (OMX_INDEXTYPE*)&nCustomIndex);
+	    error = OMX_GetExtensionIndex(pHandle, "OMX.TI.JPEG.Encoder.Config.DRI", (OMX_INDEXTYPE*)&nCustomIndex);
 	    if ( error != OMX_ErrorNone ) {
 	        printf("%d::APP_Error at function call: %x\n", __LINE__, error);
 	        goto EXIT;

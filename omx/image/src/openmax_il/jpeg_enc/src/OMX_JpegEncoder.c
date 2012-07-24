@@ -28,7 +28,7 @@
 /**
 * @file OMX_JpegEncoder.c
 *
-* This file implements OMX Component for JPEG encoder that
+* This file implements OMX Component for JPEG.Encoder that
 * is fully compliant with the OMX specification 1.5.
 *
 * @path  $(CSLPATH)\src
@@ -80,7 +80,7 @@
     #include <ResourceManagerProxyAPI.h>
 #endif
 /*----------------------Global-----------------------------------*/
-OMX_STRING cJPEGencName = "OMX.TI.JPEG.encoder"; 
+OMX_STRING cJPEGencName = "OMX.TI.JPEG.Encoder"; 
 /*--------function prototypes ---------------------------------*/
 static OMX_ERRORTYPE JPEGENC_SetCallbacks (OMX_HANDLETYPE hComp,
                                    OMX_CALLBACKTYPE* pCallBacks, 
@@ -489,7 +489,7 @@ OMX_ERRORTYPE OMX_ComponentInit (OMX_HANDLETYPE hComponent)
 #ifdef KHRONOS_1_1
     pHandle->ComponentRoleEnum          = ComponentRoleEnum;
 #endif
-    OMX_PRINT2(pComponentPrivate->dbg, "Inside Component Init JPEG encoder\n");
+    OMX_PRINT2(pComponentPrivate->dbg, "Inside Component Init JPEG.Encoder\n");
     pComponentPrivate->ComponentVersion.s.nVersionMajor = 0x01;
     pComponentPrivate->ComponentVersion.s.nVersionMinor = 0x00;
     pComponentPrivate->ComponentVersion.s.nRevision = 0x00;
@@ -2486,21 +2486,21 @@ OMX_ERRORTYPE JPEGENC_GetExtensionIndex(OMX_IN OMX_HANDLETYPE hComponent, OMX_IN
     OMX_U16 nIndex;
     OMX_ERRORTYPE eError = OMX_ErrorUndefined;
     JPEGENC_CUSTOM_PARAM_DEFINITION sJpegEncCustomParams[] = {
-    {"OMX.TI.JPEG.encoder.Config.HuffmanTable", OMX_IndexCustomHuffmanTable},    
-    {"OMX.TI.JPEG.encoder.Config.CommentFlag", OMX_IndexCustomCommentFlag},
-    {"OMX.TI.JPEG.encoder.Config.CommentString", OMX_IndexCustomCommentString},
-    {"OMX.TI.JPEG.encoder.Config.InputFrameWidth", OMX_IndexCustomInputFrameWidth},
-    {"OMX.TI.JPEG.encoder.Config.InputFrameHeight", OMX_IndexCustomInputFrameHeight},
-    {"OMX.TI.JPEG.encoder.Config.APP0", OMX_IndexCustomAPP0},
-    {"OMX.TI.JPEG.encoder.Config.APP1", OMX_IndexCustomAPP1},
-    {"OMX.TI.JPEG.encoder.Config.APP5", OMX_IndexCustomAPP5},
-    {"OMX.TI.JPEG.encoder.Config.APP13", OMX_IndexCustomAPP13},
-    {"OMX.TI.JPEG.encoder.Config.QFactor", OMX_IndexCustomQFactor},
-    {"OMX.TI.JPEG.encoder.Config.DRI", OMX_IndexCustomDRI},
-    {"OMX.TI.JPEG.encoder.Config.Debug", OMX_IndexCustomDebug},
-    {"OMX.TI.JPEG.encoder.Config.ConversionFlag", OMX_IndexCustomConversionFlag},
-    {"OMX.TI.JPEG.encoder.Config.PPLibEnable", OMX_IndexCustomPPLibEnable},
-    {"OMX.TI.JPEG.encoder.Config.PPLibDynParams", OMX_IndexCustomPPLibDynParams},
+    {"OMX.TI.JPEG.Encoder.Config.HuffmanTable", OMX_IndexCustomHuffmanTable},    
+    {"OMX.TI.JPEG.Encoder.Config.CommentFlag", OMX_IndexCustomCommentFlag},
+    {"OMX.TI.JPEG.Encoder.Config.CommentString", OMX_IndexCustomCommentString},
+    {"OMX.TI.JPEG.Encoder.Config.InputFrameWidth", OMX_IndexCustomInputFrameWidth},
+    {"OMX.TI.JPEG.Encoder.Config.InputFrameHeight", OMX_IndexCustomInputFrameHeight},
+    {"OMX.TI.JPEG.Encoder.Config.APP0", OMX_IndexCustomAPP0},
+    {"OMX.TI.JPEG.Encoder.Config.APP1", OMX_IndexCustomAPP1},
+    {"OMX.TI.JPEG.Encoder.Config.APP5", OMX_IndexCustomAPP5},
+    {"OMX.TI.JPEG.Encoder.Config.APP13", OMX_IndexCustomAPP13},
+    {"OMX.TI.JPEG.Encoder.Config.QFactor", OMX_IndexCustomQFactor},
+    {"OMX.TI.JPEG.Encoder.Config.DRI", OMX_IndexCustomDRI},
+    {"OMX.TI.JPEG.Encoder.Config.Debug", OMX_IndexCustomDebug},
+    {"OMX.TI.JPEG.Encoder.Config.ConversionFlag", OMX_IndexCustomConversionFlag},
+    {"OMX.TI.JPEG.Encoder.Config.PPLibEnable", OMX_IndexCustomPPLibEnable},
+    {"OMX.TI.JPEG.Encoder.Config.PPLibDynParams", OMX_IndexCustomPPLibDynParams},
     {"",0x0}
     };
 
